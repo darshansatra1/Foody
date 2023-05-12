@@ -2,8 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
-    id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.foodie"
-        minSdk 21
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -96,7 +96,6 @@ dependencies {
 
     // Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
-//    implementation 'com.todkars:shimmer-recyclerview:0.4.0'
 
     // Jsoup
     implementation 'org.jsoup:jsoup:1.16.1'
@@ -104,4 +103,8 @@ dependencies {
 
 kapt {
     correctErrorTypes = true
+}
+
+hilt {
+    enableAggregatingTask = true
 }
