@@ -1,4 +1,4 @@
-package com.example.foodie
+package com.example.foodie.data.network
 
 import com.example.foodie.models.FoodRecipe
 import retrofit2.Response

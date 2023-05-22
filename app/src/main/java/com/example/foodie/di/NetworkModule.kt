@@ -1,8 +1,7 @@
 package com.example.foodie.di
 
-import com.example.foodie.Constants.Companion.BASE_URL
-import com.example.foodie.FoodRecipesApi
-import com.google.gson.Gson
+import com.example.foodie.util.Constants.Companion.BASE_URL
+import com.example.foodie.data.network.FoodRecipesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,7 +46,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit):FoodRecipesApi{
+    fun provideApiService(retrofit: Retrofit): FoodRecipesApi {
         return retrofit.create(FoodRecipesApi::class.java)
     }
 }

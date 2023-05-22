@@ -1,4 +1,4 @@
-package com.example.foodie
+package com.example.foodie.util
 
 class Constants {
     companion object{
