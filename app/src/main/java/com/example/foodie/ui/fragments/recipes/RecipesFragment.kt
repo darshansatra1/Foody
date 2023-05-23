@@ -15,6 +15,7 @@ import com.example.foodie.adapters.RecipesAdapter
 import com.example.foodie.databinding.FragmentRecipesBinding
 import com.example.foodie.util.Constants.Companion.API_KEY
 import com.example.foodie.util.NetworkResult
+import com.example.foodie.util.observeOnce
 import com.example.foodie.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -57,7 +58,7 @@ class RecipesFragment : Fragment() {
     private fun readDatabase() {
 
         lifecycleScope.launch {
-            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     Log.d("RECIPES FRAGMENT", "READ DATABASE CALLED")
                     adapter.setData(database[0].foodRecipe)
@@ -67,8 +68,6 @@ class RecipesFragment : Fragment() {
                 }
             }
         }
-
-
     }
 
     private fun requestApiData() {
