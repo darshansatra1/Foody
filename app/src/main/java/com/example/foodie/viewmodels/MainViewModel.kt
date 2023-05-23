@@ -48,7 +48,6 @@ class MainViewModel @Inject constructor(
                     offlineCacheRecipes(foodRecipe)
                 }
             }catch (e:java.lang.Exception){
-                Log.e("ERROR",e.toString())
                 recipesResponse.value = NetworkResult.Error("Recipes not found")
             }
         }else{

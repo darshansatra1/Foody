@@ -41,6 +41,8 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner =this
+        binding.mainViewModel = mainViewModel
 
 
         setupRecyclerView()
@@ -60,7 +62,7 @@ class RecipesFragment : Fragment() {
         lifecycleScope.launch {
             mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
-                    Log.d("RECIPES FRAGMENT", "READ DATABASE CALLED")
+
                     adapter.setData(database[0].foodRecipe)
                     hideShimmerEffect()
                 } else {
@@ -71,7 +73,7 @@ class RecipesFragment : Fragment() {
     }
 
     private fun requestApiData() {
-        Log.d("RECIPES FRAGMENT", "REQUEST API CALLED")
+
         mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
