@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import com.example.foodie.R
 import com.example.foodie.databinding.RecipesBottomSheetBinding
 import com.example.foodie.util.Constants.Companion.DEFAULT_DIET_TYPE
@@ -15,6 +16,7 @@ import com.example.foodie.viewmodels.RecipesViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import kotlinx.coroutines.delay
 import java.util.*
 
 class RecipesBottomSheet : BottomSheetDialogFragment() {
@@ -67,7 +69,8 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
                 dietTypeChip,
                 dietTypeChipId
             )
-
+            val action = RecipesBottomSheetDirections.actionRecipesBottomSheetToRecipesFragment(true)
+            findNavController().navigate(action)
         }
 
         return binding.root
